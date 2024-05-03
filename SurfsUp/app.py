@@ -6,16 +6,18 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 import numpy as np
 import pandas
+import os
 
 
 # Create engine
-engine = create_engine("sqlite:///SurfsUp.hawaii.sqlite")
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+engine = create_engine("sqlite:///Resources/hawaii.sqlite")
 
 # Reflect an existing database into a new model
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 
-# Print out the available table names
+
 print(Base.classes.keys())
 # #################################################
 # # Database Setup
@@ -51,8 +53,8 @@ print(Base.classes.keys())
 #         <li><a href="/api/v1.0/precipitation">/api/v1.0/precipitation</a></li>
 #         <li><a href="/api/v1.0/stations">/api/v1.0/stations</a></li>
 #         <li><a href="/api/v1.0/tobs">/api/v1.0/tobs</a></li>
-#         <li><a href="/api/v1.0/start">/api/v1.0/&lt;start&gt;</a></li>
-#         <li><a href="/api/v1.0/start/end">/api/v1.0/&lt;start&gt;/&lt;end&gt;</a></li>
+#         <li><a href="/api/v1.0/tstats">/api/v1.0/&lt;start&gt;</a></li>
+#         <li><a href="/api/v1.0/tstats/">/api/v1.0/&lt;start&gt;/&lt;end&gt;</a></li>
 #     </ul>
 #     """)
 
